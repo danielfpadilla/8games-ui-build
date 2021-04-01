@@ -15,10 +15,13 @@
         <thead>
           <tr>
             <th>ID</th>
+            <th>Agent/Sub-agent</th>
+            <th>Player username</th>
+            <th>Contact #</th>
             <th>Reference #</th>
             <th>Draw</th>
             <th>Combination</th>
-            <th>Bet amount</th>
+            <th>Bet Amount</th>
             <th>Date/time</th>
           </tr>
         </thead>
@@ -46,6 +49,9 @@
                 },
                 columns: [
                     { data: 'id', name: 'id'},
+                    { data: 'full_name', name: 'full_name'},
+                    { data: 'username', name: 'username'},
+                    { data: 'contact_no', name: 'contact_no'},
                     { data: 'referenceno', name: 'referenceno'},
                     { data: 'draw_name', name: 'draw_name'},
                     { data: 'combination', name: 'combination'},
@@ -54,9 +60,7 @@
                 ],
                 order: [[ 0, "desc" ]],
                 columnDefs:[
-                  { "targets": [ 0 ], "visible": false, "searchable": false},
-
-                  // { targets: 6, searchable: false, orderable: false},
+                  { "targets": [ 0 ], "visible": false, "searchable": false}
                 ],
                 drawCallback: function() {
 
