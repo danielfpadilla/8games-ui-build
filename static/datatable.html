@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+
+    <meta charset=utf-8 />
+    <title>DataTables - JS Bin</title>
+  </head>
+  <body>
+    <div class="container">
+      <table id="example" class="display nowrap" width="100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Reference #</th>
+            <th>Draw</th>
+            <th>Combination</th>
+            <th>Bet amount</th>
+            <th>Date/time</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <script>
+      $(document).ready( function () {
+            var table = $('#example').DataTable( {
+                processing: true,
+                serverSide: true,
+                lengthChange: false,
+                pageLength: 50,
+                lengthMenu: [[10, 25, 50], [10, 25, 50]],
+                bDestroy: true,
+                ajax : {
+                    url: "https://n8games.cc/api/v1/playerbethistory",
+                    type: 'GET',
+                    headers: {
+                      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1NTcyYzE2Yzc3MzJmMjQ0NTU4OWYzOGYzYzg4YjZhMzIzZGIyMThkZWIyNzRhMmU3YzA1NDk4Y2QzMjFiZDllYjJjZjY4ZWFhZTgzMjdlIn0.eyJhdWQiOiI4IiwianRpIjoiNTU1NzJjMTZjNzczMmYyNDQ1NTg5ZjM4ZjNjODhiNmEzMjNkYjIxOGRlYjI3NGEyZTdjMDU0OThjZDMyMWJkOWViMmNmNjhlYWFlODMyN2UiLCJpYXQiOjE2MTcxODI3MjUsIm5iZiI6MTYxNzE4MjcyNSwiZXhwIjoxNjQ4NzE4NzI1LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.nEHmh_eGFG5_eks3nLf0YzpGnosZF03hd4bG-7svH_7PWK59bI5HOx2yAjPg3ZXxb_F5IKeRTaxE3mwkX1S2JexE-EufQ-6XWLocmnsuAVR9R_M1pBKEmOk67wI2Iy9AYV4RJJ4PRfEJV4IpsfAaX1v1ZpxoMRZyLijMOUWteEXSHx29gQ3slsMIFQbBrFsLn2gIp9pIX3_NoLuWBRb7cqAtEoh4nA4fu4sBM9PEnAjWk737CcVQ6q1afawEFuS7lkTis4goTyvGf0TU6NrPZz9l0t_QAhsUux2jIEO5V9IK9m46NqfN5FwAwBZT_8Cku8quaKAuzfQE2JXr_f87XPJ6RL0V-7AxO1rp8EXSkthEGSRsbEJG2BPFqdJ-YnlVZ7i1d9Raaje9ic6j1Fv415aJvJ6Y1DXxDW89vROb9TgoGwHWE2HKsRiIS8IOZAGV9hlvAN5WsT4rFJbXN2OZ6ZdU-FjkL4dEqbaKCXEvZ0yizsh3-Dbj0z-OLAvab6MHKLDMMOHiNuigzG3GalWwGBgWzkKcaaP9O2PDowMncQzzBzQrXm9ZNqVtNrXCkvBigftNlR16P6MxWT0TlKt2zLjuf73uHpoVCPUgItq7V1Zk-DvxmbkZ4UzDYYFdoImdZdskQm4B041caHTspBBTmnLMLG5pdknvz1BWUgHMyq0'
+                    }
+                },
+                "footerCallback": function ( row, data, start, end, display ) {
+
+                },
+                columns: [
+                    { data: 'id', name: 'id'},
+                    { data: 'referenceno', name: 'referenceno'},
+                    { data: 'draw_name', name: 'draw_name'},
+                    { data: 'combination', name: 'combination'},
+                    { data: 'bet', name: 'bet'},
+                    { data: 'drawdate', name: 'drawdate'},
+                ],
+                order: [[ 0, "desc" ]],
+                columnDefs:[
+                  { "targets": [ 0 ], "visible": false, "searchable": false},
+
+                  // { targets: 6, searchable: false, orderable: false},
+                ],
+                drawCallback: function() {
+
+                }
+            });
+
+            $('#searchinput').keyup(function(){
+              table.search($(this).val()).draw() ;
+            });
+
+        });
+
+    </script>
+  </body>
+</html>
