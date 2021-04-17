@@ -1,6 +1,8 @@
 {
   "AUTH_KEY": "n8games",
-  "API_BASE": "https://n8games.cc/api",
+  "API_BASE": "https://luckyn8.cc/api",
+  "API_AUTH_VERIFY": "/v1/tfauthverify",
+  "API_AUTH_RESEND": "/v1/tfauthresend",
   "API_LOGIN": "/v1/login",
   "API_LOGOUT": "/v1/logout",
   "API_SERVERTIME": "/v1/servertime",
