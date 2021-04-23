@@ -18,6 +18,7 @@
   "API_DRAWS": "/v1/listdraws",
   "API_DRAW_DROPDOWN": "/v1/drawdropdownlist",
   "API_PLAYER": "/v1/player",
+  "API_REFRESH_TOKEN": "/v1/refreshtoken",
   "API_SALES": "/v1/sales",
   "API_SEARCH_PLAYER": "/v1/searchplayer",
   "API_SUB_AGENT": "/v1/subagent",
